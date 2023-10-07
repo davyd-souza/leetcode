@@ -21,17 +21,12 @@ Example 3:
 */
 
 pub fn format(n: i32) -> Vec<String> {
-  let mut vec: Vec<String> = Vec::new();
-
-  for number in 1..=n {
-
-    match (number % 5, number % 3) {
-      (0, 0) => vec.push("FizzBuzz".to_string()),
-      (_, 0) => vec.push("Fizz".to_string()),
-      (0, _) => vec.push("Buzz".to_string()),
-      _ => vec.push(number.to_string())
-    }
-  }
-
-  return vec;
+  return (1..=n)
+    .map(|number| match (number % 5, number % 3) {
+      (0, 0) => "FizzBuzz".to_string(),
+      (_, 0) => "Fizz".to_string(),
+      (0, _) => "Buzz".to_string(),
+      _ => number.to_string()
+    })
+    .collect::<Vec<String>>();
 }
